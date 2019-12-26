@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Implementation-Title: db-demo-service-interface
+Implementation-Version: 1.0.0
+Created-By: 13.0.1 (Oracle Corporation)
+Built-With: gradle 6.0.1
+Build-Time: 2019-12-26T08:27:04.265900400Z
+
