@@ -1,0 +1,9 @@
+rootProject.name = 'else-pratice'
+include 'web-service'
+include 'demo-service-db-migration'
+include 'db-demo-service'
+include 'db-demo-service-interface'
+include 'demo-service-mongo-migration'
+include 'db-demo-service'
+include 'db-demo-service'
+
