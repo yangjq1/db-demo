@@ -29,11 +29,11 @@ public class ProductService {
     }
 
     public ProductView get(String id) {
-        Product product = collection.get(id).orElseThrow(()-> new NotFoundException("product not found,id=" + id));
+        Product product = collection.get(id).orElseThrow(() -> new NotFoundException("product not found,id=" + id));
         return view(product);
     }
 
-    public ProductView replace(String id,EditProductRequest request){
+    public ProductView replace(String id, EditProductRequest request) {
         Product product = new Product();
         product.name = request.name;
         product.id = id;
@@ -42,18 +42,18 @@ public class ProductService {
         return view(product);
     }
 
-    public ProductView update(String id,EditProductRequest request){
+    public ProductView update(String id, EditProductRequest request) {
         long updatedCount = collection.update(Filters.eq("_id", id), Updates.set("name", request.name));
-        if(updatedCount == 0){
+        if (updatedCount == 0) {
             throw new NotFoundException("product not found,id=" + id);
         }
         return get(id);
     }
 
 
-    public void delete(String id){
+    public void delete(String id) {
         boolean flag = collection.delete(id);
-        if(!flag){
+        if (!flag) {
             throw new NotFoundException("product not found,id=" + id);
         }
     }

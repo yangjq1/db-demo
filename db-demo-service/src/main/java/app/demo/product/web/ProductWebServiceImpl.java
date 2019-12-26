@@ -4,7 +4,6 @@ import app.demo.api.ProductWebService;
 import app.demo.api.product.EditProductRequest;
 import app.demo.api.product.ProductView;
 import app.demo.product.service.ProductService;
-import core.framework.api.web.service.PathParam;
 import core.framework.inject.Inject;
 
 /**
@@ -32,8 +31,8 @@ public class ProductWebServiceImpl implements ProductWebService {
 //    }
 
     @Override
-    public ProductView update(String id,EditProductRequest request) {
-        return productService.update(id,request);
+    public ProductView update(String id, EditProductRequest request) {
+        return productService.update(id, request);
     }
 
     @Override

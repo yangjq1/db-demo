@@ -16,6 +16,6 @@ public class CustomerModule extends Module {
         db().repository(Customer.class);
         db().repository(Order.class);
         bind(CustomerService.class);
-        api().service(CustomerWebService.class,bind(CustomerWebServiceImpl.class));
+        api().service(CustomerWebService.class, bind(CustomerWebServiceImpl.class));
     }
 }

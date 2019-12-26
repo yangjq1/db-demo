@@ -30,29 +30,29 @@ public class CustomerService {
         Query<Customer> query = customerRepository.select();
         query.skip(request.skip);
         query.limit(request.limit);
-        if(!Strings.isBlank(request.email)){
-            query.where("email = ?",request.email);
+        if (!Strings.isBlank(request.email)) {
+            query.where("email = ?", request.email);
         }
-        if(!Strings.isBlank(request.firstName)){
-            query.where("first_name like ?",Strings.format("%{}%", request.firstName));
+        if (!Strings.isBlank(request.firstName)) {
+            query.where("first_name like ?", Strings.format("%{}%", request.firstName));
         }
-        if(!Strings.isBlank(request.lastName)){
-            query.where("last_name like ?",Strings.format("" + "%{}%", request.lastName));
+        if (!Strings.isBlank(request.lastName)) {
+            query.where("last_name like ?", Strings.format("" + "%{}%", request.lastName));
         }
-        response.customers = query.fetch().stream().map(item->view(item)).collect(Collectors.toList());
+        response.customers = query.fetch().stream().map(item -> view(item)).collect(Collectors.toList());
         response.total = query.count();
         return response;
     }
     public CustomerView get(Long id) {
-        Customer customer = customerRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found,id="+id));
+        Customer customer = customerRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found,id=" + id));
         return view(customer);
 
     }
 
     public CustomerView create(CreateCustomerRequest request) {
-        Optional<Customer> dbCustomer = customerRepository.selectOne("email = ?",request.email);
-        if(dbCustomer.isPresent()){
-            throw  new ConflictException("customer already exists,email="+request.email);
+        Optional<Customer> dbCustomer = customerRepository.selectOne("email = ?", request.email);
+        if (dbCustomer.isPresent()) {
+            throw  new ConflictException("customer already exists, email=" + request.email);
         }
 
         Customer customer = new Customer();
@@ -67,7 +67,7 @@ public class CustomerService {
     }
 
     public CustomerView update(Long id, UpdateCustomerRequest request) {
-        Customer customer = customerRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found,id="+id));
+        Customer customer = customerRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found,id=" + id));
         customer.updatedTime = LocalDateTime.now();
         customer.lastName = request.lastName;
         customer.firstName = request.fistName;

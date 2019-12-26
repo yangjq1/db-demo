@@ -28,7 +28,7 @@ public class CustomerWebServiceImpl implements CustomerWebService {
 
     @Override
     public CustomerView update(Long id, UpdateCustomerRequest request) {
-        return customerService.update(id,request);
+        return customerService.update(id, request);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class CustomerWebServiceImpl implements CustomerWebService {
 
     @Override
     public SearchCustomerResponse search(SearchCustomerRequest request) {
-       return customerService.search(request);
+        return customerService.search(request);
     }
 }
