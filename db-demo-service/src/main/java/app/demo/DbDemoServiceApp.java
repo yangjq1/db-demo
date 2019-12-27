@@ -9,10 +9,11 @@ import core.framework.module.SystemModule;
 public class DbDemoServiceApp extends App {
     @Override
     protected void initialize() {
-        http().httpPort(9012);
-        http().httpsPort(9072);
+        http().httpPort(9013);
+        http().httpsPort(9073);
         load(new SystemModule("sys.properties"));
         load(new CustomerModule());
         load(new ProductModule());
+        load(new OrderModule());
     }
 }

@@ -1,29 +1,28 @@
-package app.demo.customer.domain;
+package app.demo.api.order;
 
+import core.framework.api.json.Property;
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
 import core.framework.db.PrimaryKey;
-import core.framework.db.Table;
 
 import java.time.LocalDateTime;
 
 /**
  * @author Else
  */
-@Table(name = "order")
-public class Order {
+public class OrderView {
     @PrimaryKey(autoIncrement = true)
-    @Column(name = "id")
+    @Property(name = "id")
     public Long id;
 
     @NotNull
-    @Column(name = "customer_id")
+    @Property(name = "customer_id")
     public Long customerId;
 
-    @Column(name = "description")
+    @Property(name = "description")
     public String description;
 
     @NotNull
-    @Column(name = "created_time")
+    @Property(name = "created_time")
     public LocalDateTime createdTime;
 }
