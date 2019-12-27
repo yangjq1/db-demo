@@ -6,4 +6,5 @@ include 'db-demo-service-interface'
 include 'demo-service-mongo-migration'
 include 'db-demo-service'
 include 'db-demo-service'
+include 'db-service-mongo-migration'
 
