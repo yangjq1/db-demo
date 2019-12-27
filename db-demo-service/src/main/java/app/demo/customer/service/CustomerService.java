@@ -39,7 +39,7 @@ public class CustomerService {
         if (!Strings.isBlank(request.lastName)) {
             query.where("last_name like ?", Strings.format("" + "%{}%", request.lastName));
         }
-        response.customers = query.fetch().stream().map(item -> view(item)).collect(Collectors.toList());
+        response.customers = query.fetch().stream().map(this::view).collect(Collectors.toList());
         response.total = query.count();
         return response;
     }

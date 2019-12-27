@@ -14,8 +14,6 @@ import core.framework.api.web.service.Path;
 import core.framework.api.web.service.PathParam;
 import core.framework.api.web.service.ResponseStatus;
 
-import java.util.List;
-
 /**
  * @author Else
  */

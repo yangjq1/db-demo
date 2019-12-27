@@ -1,5 +1,6 @@
 package app.demo.api.order;
 
+import core.framework.api.json.Property;
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
 
@@ -8,9 +9,9 @@ import core.framework.db.Column;
  */
 public class EditOrderRequest {
     @NotNull
-    @Column(name = "customer_id")
+    @Property(name = "customer_id")
     public Long customerId;
 
-    @Column(name = "description")
+    @Property(name = "description")
     public String description;
 }

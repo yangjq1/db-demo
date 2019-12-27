@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 /**
  * @author Else
  */
-@Collection(name = "product")
+@Collection(name = "products")
 public class Product {
     @Id
     public String id;

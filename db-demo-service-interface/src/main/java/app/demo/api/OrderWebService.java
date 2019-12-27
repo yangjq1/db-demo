@@ -8,8 +8,6 @@ import core.framework.api.web.service.POST;
 import core.framework.api.web.service.Path;
 import core.framework.api.web.service.PathParam;
 
-import java.util.List;
-
 /**
  * @author Else
  */
