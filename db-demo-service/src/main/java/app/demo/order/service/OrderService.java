@@ -11,7 +11,6 @@ import core.framework.inject.Inject;
 import core.framework.web.exception.NotFoundException;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Else
@@ -22,7 +21,7 @@ public class OrderService {
     @Inject
     Repository<Order> orderRepository;
 
-    public SimpleOrderView create(EditOrderRequest request){
+    public SimpleOrderView create(EditOrderRequest request) {
         Order order = new Order();
         order.createdTime = LocalDateTime.now();
         order.customerId = request.customerId;
@@ -34,10 +33,10 @@ public class OrderService {
         return view(order);
     }
 
-    public OrderView get(Long id){
-        OrderView orderView = database.selectOne("select o.id,o.description,o.created_time,c.email from orders as o ,customer as c where c.id = o.customer_id and o.id=?", OrderView.class,id)
+    public OrderView get(Long id) {
+        OrderView orderView = database.selectOne("select o.id,o.description,o.created_time,c.email from orders as o ,customer as c where c.id = o.customer_id and o.id=?", OrderView.class, id)
             .orElseThrow(() -> new NotFoundException("order not found, id = " + id));
-       return orderView;
+        return orderView;
     }
 
     private SimpleOrderView view(Order order) {

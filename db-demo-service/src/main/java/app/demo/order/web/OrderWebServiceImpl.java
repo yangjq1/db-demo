@@ -7,8 +7,6 @@ import app.demo.api.order.SimpleOrderView;
 import app.demo.order.service.OrderService;
 import core.framework.inject.Inject;
 
-import java.util.List;
-
 /**
  * @author Else
  */

@@ -43,16 +43,16 @@ public class CustomerService {
         response.total = query.count();
         return response;
     }
+
     public CustomerView get(Long id) {
         Customer customer = customerRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found,id=" + id));
         return view(customer);
-
     }
 
     public CustomerView create(CreateCustomerRequest request) {
         Optional<Customer> dbCustomer = customerRepository.selectOne("email = ?", request.email);
         if (dbCustomer.isPresent()) {
-            throw  new ConflictException("customer already exists, email=" + request.email);
+            throw new ConflictException("customer already exists, email=" + request.email);
         }
 
         Customer customer = new Customer();
@@ -71,7 +71,7 @@ public class CustomerService {
         customer.updatedTime = LocalDateTime.now();
         customer.lastName = request.lastName;
         customer.firstName = request.fistName;
-        customerRepository.update(customer);
+        customerRepository.partialUpdate(customer);
         return view(customer);
     }
 
