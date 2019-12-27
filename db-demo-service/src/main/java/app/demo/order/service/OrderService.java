@@ -2,13 +2,16 @@ package app.demo.order.service;
 
 import app.demo.api.order.EditOrderRequest;
 import app.demo.api.order.OrderView;
+import app.demo.api.order.SimpleOrderView;
 import app.demo.order.domain.Order;
 import core.framework.db.Database;
 import core.framework.db.Repository;
 import core.framework.db.Transaction;
 import core.framework.inject.Inject;
+import core.framework.web.exception.NotFoundException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Else
@@ -19,7 +22,7 @@ public class OrderService {
     @Inject
     Repository<Order> orderRepository;
 
-    public OrderView create(EditOrderRequest request){
+    public SimpleOrderView create(EditOrderRequest request){
         Order order = new Order();
         order.createdTime = LocalDateTime.now();
         order.customerId = request.customerId;
@@ -31,14 +34,18 @@ public class OrderService {
         return view(order);
     }
 
-    private OrderView view(Order order) {
-        OrderView view = new OrderView();
+    public OrderView get(Long id){
+        OrderView orderView = database.selectOne("select o.id,o.description,o.created_time,c.email from orders as o ,customer as c where c.id = o.customer_id and o.id=?", OrderView.class,id)
+            .orElseThrow(() -> new NotFoundException("order not found, id = " + id));
+       return orderView;
+    }
+
+    private SimpleOrderView view(Order order) {
+        SimpleOrderView view = new SimpleOrderView();
         view.createdTime = order.createdTime;
         view.customerId = order.customerId;
         view.description = order.description;
         view.id = order.id;
         return view;
     }
-
-
 }
