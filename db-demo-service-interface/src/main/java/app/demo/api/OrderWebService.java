@@ -19,5 +19,5 @@ public interface OrderWebService {
 
     @GET
     @Path("/order/:id")
-    OrderView get(@PathParam(value = "id") Long id);
+    OrderView get(@PathParam("id") Long id);
 }

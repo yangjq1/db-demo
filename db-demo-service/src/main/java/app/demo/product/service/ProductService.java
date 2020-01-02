@@ -24,6 +24,7 @@ public class ProductService {
         product.name = request.name;
         product.createdTime = ZonedDateTime.now();
         product.id = UUID.randomUUID().toString();
+        product.desc = request.desc;
         collection.insert(product);
         return view(product);
     }
@@ -63,6 +64,7 @@ public class ProductService {
         view.id = product.id;
         view.name = product.name;
         view.createdTime = product.createdTime;
+        view.desc = product.desc;
         return view;
     }
 }

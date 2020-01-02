@@ -16,5 +16,5 @@ public class UpdateCustomerRequest {
     @NotNull
     @NotBlank
     @Property(name = "last_name")
-    public  String lastName;
+    public String lastName;
 }

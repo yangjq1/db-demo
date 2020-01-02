@@ -2,7 +2,6 @@ package app.demo.api.order;
 
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotNull;
-import core.framework.db.Column;
 
 /**
  * @author Else

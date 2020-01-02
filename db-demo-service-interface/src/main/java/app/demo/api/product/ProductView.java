@@ -3,7 +3,6 @@ package app.demo.api.product;
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotBlank;
 import core.framework.api.validate.NotNull;
-import org.bson.types.ObjectId;
 
 import java.time.ZonedDateTime;
 
@@ -19,6 +18,10 @@ public class ProductView {
     @NotBlank
     @Property(name = "name")
     public String name;
+
+    @NotNull
+    @Property(name = "desc")
+    public String desc;
 
     @NotNull
     @Property(name = "created_time")

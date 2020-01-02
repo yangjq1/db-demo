@@ -12,4 +12,8 @@ public class EditProductRequest {
     @NotBlank
     @Property(name = "name")
     public String name;
+
+    @NotBlank
+    @Property(name = "desc")
+    public String desc;
 }
