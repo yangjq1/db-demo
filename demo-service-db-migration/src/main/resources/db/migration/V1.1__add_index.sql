@@ -1,0 +1,1 @@
+CREATE INDEX unique_email ON orders(customer_id);
