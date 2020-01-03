@@ -20,6 +20,9 @@ public class Product {
     @Field(name = "desc")
     public String desc;
 
+    @Field(name = "pno")
+    public String pno;
+
     @Field(name = "created_time")
     public ZonedDateTime createdTime;
 }

@@ -6,6 +6,7 @@ import app.demo.api.order.OrderView;
 import app.demo.api.order.SimpleOrderView;
 import app.demo.order.service.OrderService;
 import core.framework.inject.Inject;
+import core.framework.log.ActionLogContext;
 
 /**
  * @author Else
@@ -16,6 +17,7 @@ public class OrderWebServiceImpl implements OrderWebService {
 
     @Override
     public SimpleOrderView create(EditOrderRequest request) {
+        ActionLogContext.put("customer_id", request.customerId);
         return orderService.create(request);
     }
 

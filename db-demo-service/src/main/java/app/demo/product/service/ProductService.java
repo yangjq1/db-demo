@@ -25,6 +25,7 @@ public class ProductService {
         product.createdTime = ZonedDateTime.now();
         product.id = UUID.randomUUID().toString();
         product.desc = request.desc;
+        product.pno = request.pno;
         collection.insert(product);
         return view(product);
     }

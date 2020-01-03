@@ -1,3 +1,4 @@
+import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
 import core.framework.mongo.MongoMigration;
 import org.bson.BsonDocument;
@@ -16,6 +17,9 @@ public class Main {
         migration = new MongoMigration("sys.properties");
         migration.migrate( mongo ->
             mongo.createIndex("products", Indexes.ascending("created_time"))
+        );
+        migration.migrate( mongo ->
+            mongo.createIndex("products", Indexes.ascending("pno"), new IndexOptions().unique(true))
         );
         migration.migrate(mongo ->
             mongo.createIndex("products", Indexes.compoundIndex(new BsonDocument("name",new BsonInt32(1)),
