@@ -24,22 +24,23 @@ public class CustomerWebServiceImpl implements CustomerWebService {
 
     @Override
     public CustomerView create(CreateCustomerRequest request) {
-        ActionLogContext.put("customer_email", request.email);
-        ActionLogContext.put("customer_fistName", request.fistName);
-        ActionLogContext.put("customer_lastName", request.lastName);
+        ActionLogContext.put("email", request.email);
+        ActionLogContext.put("fistName", request.fistName);
+        ActionLogContext.put("lastName", request.lastName);
         return customerService.create(request);
     }
 
     @Override
     public CustomerView update(Long id, UpdateCustomerRequest request) {
-        ActionLogContext.put("customer_fistName", request.fistName);
-        ActionLogContext.put("customer_lastName", request.lastName);
+        ActionLogContext.put("customerId", request.fistName);
+        ActionLogContext.put("fistName", request.fistName);
+        ActionLogContext.put("lastName", request.lastName);
         return customerService.update(id, request);
     }
 
     @Override
     public void delete(Long id) {
-        ActionLogContext.put("customer_id", id);
+        ActionLogContext.put("customerId", id);
         customerService.delete(id);
     }
 

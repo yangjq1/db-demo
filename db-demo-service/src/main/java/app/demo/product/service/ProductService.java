@@ -35,15 +35,6 @@ public class ProductService {
         return view(product);
     }
 
-    public ProductView replace(String id, EditProductRequest request) {
-        Product product = new Product();
-        product.name = request.name;
-        product.id = id;
-        product.createdTime = ZonedDateTime.now();
-        collection.replace(product);
-        return view(product);
-    }
-
     public ProductView update(String id, EditProductRequest request) {
         long updatedCount = collection.update(Filters.eq("_id", id), Updates.set("name", request.name));
         if (updatedCount == 0) {

@@ -17,7 +17,7 @@ public class OrderWebServiceImpl implements OrderWebService {
 
     @Override
     public SimpleOrderView create(EditOrderRequest request) {
-        ActionLogContext.put("customer_id", request.customerId);
+        ActionLogContext.put("customerId", request.customerId);
         return orderService.create(request);
     }
 
